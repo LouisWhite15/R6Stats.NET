@@ -4,12 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-
   <ItemGroup>
-    <Compile Remove="WeatherForecast.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\R6Tab.NET\R6Tab.NET.csproj">
+    <ProjectReference Include="..\..\R6Tab.NET\R6Tab.NET.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
