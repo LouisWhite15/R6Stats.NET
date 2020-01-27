@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R6Stats.NET", "R6Stats.NET.csproj", "{2F32B9C7-938F-4775-A955-2FD49FB5A89F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R6Stats.NET", "R6Stats.NET\R6Stats.NET.csproj", "{2F32B9C7-938F-4775-A955-2FD49FB5A89F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R6Tab.NET", "..\R6Tab.NET\R6Tab.NET.csproj", "{FF6FCF19-B747-4C69-A97D-594705434EC5}"
 EndProject
