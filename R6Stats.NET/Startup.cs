@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using R6Tab.NET;
 
 namespace R6Stats.NET
 {
@@ -26,6 +27,7 @@ namespace R6Stats.NET
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<IR6TabApi, R6TabApi>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
