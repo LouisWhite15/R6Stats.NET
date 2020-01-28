@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using R6Tab.NET;
 using R6Tab.NET.Models;
 
@@ -15,10 +16,16 @@ namespace R6Stats.NET.Controllers
             _r6TabApi = r6TabApi;
         }
 
-        [HttpGet("playerByNameAndPlatform")]
+        [HttpGet("player")]
         public NameResults GetPlayerByNameAndPlatform()
         {
-            return _r6TabApi.GetPlayerWithNameAndPlatform("EldoubleU.", Platform.Uplay).Result;
+            return _r6TabApi.GetPlayerByNameAndPlatform("EldoubleU.", Platform.Uplay).Result;
+        }
+
+        [HttpGet("player/{playerId}")]
+        public PlayerDataResults GetPlayerById(Guid playerId)
+        {
+            return _r6TabApi.GetPlayerById(playerId).Result;
         }
     }
 }
