@@ -28,6 +28,7 @@ namespace R6Stats.NET
         {
             services.AddControllers();
             services.AddScoped<IR6TabApi, R6TabApi>();
+            services.AddSpaStaticFiles();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +48,13 @@ namespace R6Stats.NET
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSpaStaticFiles();
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "client-app";
             });
         }
     }
