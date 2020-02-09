@@ -28,7 +28,11 @@ namespace R6Stats.NET
         {
             services.AddControllers();
             services.AddScoped<IR6TabApi, R6TabApi>();
-            services.AddSpaStaticFiles();
+
+            services.AddSpaStaticFiles(options =>
+            {
+                options.RootPath = "client-app/public";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
