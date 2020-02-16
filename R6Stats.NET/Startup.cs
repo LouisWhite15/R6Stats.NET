@@ -29,9 +29,10 @@ namespace R6Stats.NET
             services.AddControllers();
             services.AddScoped<IR6TabApi, R6TabApi>();
 
+            services.AddCors();
             services.AddSpaStaticFiles(options =>
             {
-                options.RootPath = "client-app/public";
+                options.RootPath = "client-app/dist";
             });
         }
 
@@ -41,6 +42,12 @@ namespace R6Stats.NET
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                app.UseCors(policy => policy
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .WithOrigins("http://localhost:8080")
+                    .AllowCredentials());
             }
 
             app.UseHttpsRedirection();
