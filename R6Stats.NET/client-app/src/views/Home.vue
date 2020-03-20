@@ -1,18 +1,33 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div id="home">
+    <h1>R6Stats.NET</h1>
+    <div class="container-fluid">
+      <div class="row mx-auto">
+        <!-- Search section -->
+        <section class="col-sm-12 pt-3 px-0">
+          <search @search=onSearch></search>
+        </section>
+      </div>
+     </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+//@ is an alias to /src
+import { Component, Vue, Prop, Provide } from 'vue-property-decorator'
+import Search from "@/components/Search.vue";
 
-export default {
-  name: "Home",
+@Component({
   components: {
-    HelloWorld
+    Search
   }
+})
+
+export default class Home extends Vue {
+  
+  async onSearch(term) {
+    // do nothing for now
+  }
+
 };
 </script>
