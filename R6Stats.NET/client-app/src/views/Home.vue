@@ -1,19 +1,18 @@
 <template>
   <div id="home">
-    <h1>R6Stats.NET</h1>
-    <div class="container-fluid">
-      <div class="row mx-auto">
+    <div class="container-fluid" style="padding:30px">
+      <div>
         <!-- Search section -->
-        <section class="col-sm-12">
+        <section>
           <search @search="onSearch"></search>
         </section>
         <br/>
         <!-- Loading section -->
-        <div v-if="loading" class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
+        <div class="d-flex justify-content-center mb-3" v-if="loading">
+          <b-spinner type="grow" label="Loading..." v-for="spinner in [1,2,3]" :key=spinner></b-spinner>
         </div>
         <!-- Results section -->
-        <section class="results">
+        <section>
           <results :data="results"></results>
         </section>
       </div>

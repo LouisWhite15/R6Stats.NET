@@ -21,5 +21,4 @@ export default class PlayerData extends Vue {
         return this.data;
     }
 }
-
 </script>
