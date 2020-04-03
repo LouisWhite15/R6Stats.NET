@@ -1,12 +1,12 @@
 <template>
   <div class="card-columns" >
-    <div v-if="results.totalResults === 0">
+    <div v-if="results.foundmatch === false">
       No results found.
     </div>
-    <b-card v-for="item in results.playerResults" :key="item.playerId">
+    <b-card v-for="item in results.players" :key="item">
       <b-card-body>
-        <b-card-title>{{item.playerName}}</b-card-title>
-        <b-card-text v-html="`Current MMR: ${item.currentMmr}<br>Current Rank: ${item.currentRank}`"></b-card-text>
+        <b-card-title>{{item.profile.name}}</b-card-title>
+        <b-card-text v-html="`Current MMR: ${item.ranked.mmr}<br>Current Rank: ${item.ranked.rank}`"></b-card-text>
       </b-card-body>
     </b-card>
   </div>
@@ -22,5 +22,13 @@ export default class Results extends Vue {
   get results() {
     return this.data;
   }
+}
+
+function mapToFriendlyRank(rank:number) : string
+{
+  if (rank === 17)
+    return "Platinum III";
+
+  return rank.toString();
 }
 </script>

@@ -39,7 +39,7 @@ export default class App extends Vue {
     this.loading = true;
     this.results = [];
     await Vue.axios
-      .get(`https://localhost:5001/r6stats/player/uplay/${term}`)
+      .get(`https://localhost:5001/r6stats/search/uplay/${term}`)
       .then((response) =>
       {
         this.loading=false;

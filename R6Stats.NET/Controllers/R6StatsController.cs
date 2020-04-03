@@ -17,7 +17,7 @@ namespace R6Stats.NET.Controllers
             _r6TabApi = r6TabApi;
         }
 
-        [HttpGet("player/{platform}/{name}")]
+        [HttpGet("search/{platform}/{name}")]
         public async Task<IActionResult> GetPlayerByNameAndPlatformAsync(string platform, string name)
         {
             Enum.TryParse(platform, ignoreCase: true, out Platform parsedPlatform);
@@ -27,14 +27,7 @@ namespace R6Stats.NET.Controllers
                 return BadRequest();
             }
 
-            var result = await _r6TabApi.GetPlayerByNameAndPlatform(name, parsedPlatform);
-            return Ok(result);
-        }
-
-        [HttpGet("player/{playerId}")]
-        public async Task<IActionResult> GetPlayerByIdAsync(Guid playerId)
-        {
-            var result = await _r6TabApi.GetPlayerById(playerId);
+            var result = await _r6TabApi.SearchByName(name, parsedPlatform);
             return Ok(result);
         }
     }
