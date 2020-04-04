@@ -31,6 +31,7 @@ import Results from "../components/Results.vue";
     Results
   }
 })
+
 export default class App extends Vue {
   @Provide() results = [];
   @Prop() loading = false;
