@@ -30,5 +30,12 @@ namespace R6Stats.NET.Controllers
             var result = await _r6TabApi.SearchByName(name, parsedPlatform);
             return Ok(result);
         }
+
+        [HttpGet("player/{id}")]
+        public async Task<IActionResult> GetPlayerById(Guid id)
+        {
+            var result = await _r6TabApi.SearchById(id);
+            return Ok(result);
+        }
     }
 }
