@@ -13,8 +13,9 @@ const routes = [
   },
   {
     path: "/player/:id",
-    name: "Player Stats",
-    component: PlayerStats
+    name: "PlayerStats",
+    component: PlayerStats,
+    props: true
   }
 ];
 

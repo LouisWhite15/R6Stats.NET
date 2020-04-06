@@ -17,12 +17,12 @@ import PlayerData from "../components/PlayerData.vue";
 export default class PlayerStats extends Vue {
   @Provide() result = [];
   @Prop() loading = false;
-
-  async mounted() {
+  
+  async created() {
     this.loading = true;
     this.result = [];
     await Vue.axios
-      .get(`https://localhost:5001/r6stats/player/${this.$route.path}`)
+      .get(`https://localhost:5001/r6stats/player/${this.$route.params.id}`)
       .then((response) =>
       {
         this.loading=false;

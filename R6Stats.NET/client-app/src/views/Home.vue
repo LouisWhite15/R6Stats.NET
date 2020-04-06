@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <div class="container-fluid" style="padding:30px">
+    <div class="container" style="padding:30px">
       <div>
         <!-- Search section -->
         <section>
