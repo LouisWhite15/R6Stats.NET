@@ -41,6 +41,13 @@
         <b-col>{{result.ranked.asiaLosses}}</b-col>
         <b-col>{{result.ranked.asiaWinLossPercentage}}</b-col>
       </b-row>
+      <br>
+      <b-row>
+        <b-col>MMR CHANGE</b-col>
+      </b-row>
+      <b-row>
+        <b-col><p v-if="result.ranked.asiaMmrChange > 0">+{{result.ranked.asiaMmrChange}}</p><p v-if="result.ranked.asiaMmrChange < 0">+{{result.ranked.asiaMmrChange}}</p></b-col>
+      </b-row>
     </b-container>
   </div>
 </template>

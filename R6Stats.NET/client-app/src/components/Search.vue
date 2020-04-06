@@ -1,8 +1,11 @@
 <template>
+<div>
   <b-input-group inline class="d-flex justify-content-center">
     <b-form-input v-model="term" type="text" placeholder="Enter Player Name"/>
-    <b-button @click="search()">Search</b-button>
   </b-input-group>
+  <br>
+  <b-button variant="outline-primary" @click="search()">Search</b-button>
+</div>
 </template>
 
 <script lang="ts">

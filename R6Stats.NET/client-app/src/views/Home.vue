@@ -2,6 +2,10 @@
   <div id="home">
     <div class="container" style="padding:30px">
       <div>
+        <!-- Header section -->
+        <section>
+          <router-link :to="{ name: 'Home' }"><h1 style="padding:30px">R6Stats.NET</h1></router-link>
+        </section>
         <!-- Search section -->
         <section>
           <search @search="onSearch"></search>

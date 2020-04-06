@@ -5,7 +5,7 @@
     </div>
     <b-card v-for="item in results.players" :key="item">
       <b-card-body>
-        <b-card-title><router-link :to="{ name: 'PlayerStats', params: { id: item.profile.userId}}">{{item.profile.name}}</router-link></b-card-title>
+        <b-card-title><router-link :to="{ name: 'PlayerStats', params: { id: item.profile.userId }}">{{item.profile.name}}</router-link></b-card-title>
         <b-card-text v-html="`Level: ${item.stats.level}`"></b-card-text>
       </b-card-body>
     </b-card>
