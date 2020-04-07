@@ -30,10 +30,6 @@ namespace R6Stats.NET
             services.AddScoped<IR6TabApi, R6TabApi>();
 
             services.AddCors();
-            services.AddSpaStaticFiles(options =>
-            {
-                options.RootPath = "client-app/dist";
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,13 +55,6 @@ namespace R6Stats.NET
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
-
-            app.UseSpaStaticFiles();
-
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "client-app";
             });
         }
     }
