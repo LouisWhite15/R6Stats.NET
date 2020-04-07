@@ -14,7 +14,7 @@
       <b-row>
         <b-col cols="3">
           <b-row>
-            <img :src="require('../assets/ranks/hd-rank' + result.ranked.asiaRank + '.svg')" :alt="result.ranked.asiaRankName + ' logo'" width="200" height="200">
+            <img v-if="result.ranked.asiaRank != 0" :src="require('../assets/ranks/hd-rank' + result.ranked.asiaRank + '.svg')" :alt="result.ranked.asiaRankName + ' logo'" width="200" height="200">
           </b-row>
         </b-col>
         <b-col>
