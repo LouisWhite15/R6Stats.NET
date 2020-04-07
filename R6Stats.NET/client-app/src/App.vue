@@ -6,6 +6,9 @@
 
 <style lang="scss">
 #app {
+  @import 'bootstrap/scss/bootstrap.scss';
+  @import 'bootstrap-vue/src/index.scss';
+
   $body-bg: #000;
   $body-color: #111;
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -13,8 +16,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-
-  @import 'bootstrap/scss/bootstrap.scss';
-  @import 'bootstrap-vue/src/index.scss';
 }
 </style>
