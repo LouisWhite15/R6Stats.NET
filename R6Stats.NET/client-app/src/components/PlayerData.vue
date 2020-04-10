@@ -8,7 +8,7 @@
       <img style="padding:10px" :src="'https://ubisoft-avatars.akamaized.net/' + result.player.id + '/default_256_256.png'" :alt="result.player.name + '\'s profile picture'" width="150" height="150">
       <b-row class="bg-light" style="padding:10px">
         <b-col style="text-align:right; font-weight:bold;">Name:<br>Level:<br>Last updated:</b-col>
-        <b-col style="text-align:left">{{result.player.name}}<br>Coming soon!<br>Coming soon!</b-col>
+        <b-col style="text-align:left">{{result.player.name}}<br>{{result.stats.level}}<br>{{result.refresh.uTime | moment("calendar")}}</b-col>
       </b-row>
       <br>
       <b-row>

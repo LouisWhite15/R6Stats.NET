@@ -7,14 +7,17 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import VueMoment from 'vue-moment'
 
 // Install BootstrapVue
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin)
+Vue.use(IconsPlugin);
 
 // Install VueAxios
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
+
+Vue.use(VueMoment);
 
 Vue.config.productionTip = false;
 
