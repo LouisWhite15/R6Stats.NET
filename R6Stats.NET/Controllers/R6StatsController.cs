@@ -32,14 +32,14 @@ namespace R6Stats.NET.Controllers
                 return BadRequest();
             }
 
-            var result = await _r6TabApi.SearchByName(name, parsedPlatform, _configuration["R6Tab.ApiKey"]);
+            var result = await _r6TabApi.SearchByName(name, parsedPlatform, _configuration["R6Tab_ApiKey"]);
             return Ok(result);
         }
 
         [HttpGet("player/{id}")]
         public async Task<IActionResult> GetPlayerById(Guid id)
         {
-            var result = await _r6TabApi.SearchById(id, _configuration["R6Tab.ApiKey"]);
+            var result = await _r6TabApi.SearchById(id, _configuration["R6Tab_ApiKey"]);
             return Ok(result);
         }
     }
