@@ -38,7 +38,7 @@ export default class App extends Vue {
   async onSearch(term:string) {
     this.results = [];
     await Vue.axios
-      .get(`https://localhost:5001/r6stats/search/uplay/${term}`)
+      .get(`${process.env.VUE_APP_R6STATS_API_BASE_URL}/r6stats/search/uplay/${term}`)
       .then((response) =>
       {
         this.results = response.data;

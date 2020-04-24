@@ -15,6 +15,8 @@
     "bootstrap-vue": "^2.7.0",
     "core-js": "^3.6.4",
     "crip-vue-loading": "^1.2.5",
+    "crip-vue-notice": "^1.1.1",
+    "dotenv": "^8.2.0",
     "jquery": "^3.4.1",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",

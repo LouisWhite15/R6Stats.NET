@@ -22,13 +22,11 @@ export default class PlayerStats extends Vue {
   @Prop() loading = false;
   
   async created() {
-    this.loading = true;
     this.result = [];
     await Vue.axios
-      .get(`https://localhost:5001/r6stats/player/${this.$route.params.id}`)
+      .get(`${process.env.VUE_APP_R6STATS_API_BASE_URL}/r6stats/player/${this.$route.params.id}`)
       .then((response) =>
       {
-        this.loading=false;
         this.result = response.data;
       });
   }
