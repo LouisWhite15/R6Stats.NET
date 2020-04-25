@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Provide } from "vue-property-decorator";
+import { Component, Vue, Prop, Provide, Watch } from "vue-property-decorator";
 import Search from "../components/Search.vue";
 import Results from "../components/Results.vue";
 

@@ -6,8 +6,8 @@
 
 <style lang="scss">
 #app {
-  @import 'bootstrap/scss/bootstrap.scss';
-  @import 'bootstrap-vue/src/index.scss';
+  @import "bootstrap/scss/bootstrap.scss";
+  @import "bootstrap-vue/src/index.scss";
 
   $body-bg: #000;
   $body-color: #111;
