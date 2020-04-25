@@ -23,7 +23,12 @@ export default class PlayerStats extends Vue {
   
   async created() {
     this.result = [];
-    await Vue.axios
+    
+    const r6statsApi = Vue.axios.create({
+      headers: {'X-API-KEY': process.env.VUE_APP_R6STATS_API_KEY}
+    });
+
+    await r6statsApi
       .get(`${process.env.VUE_APP_R6STATS_API_BASE_URL}/r6stats/player/${this.$route.params.id}`)
       .then((response) =>
       {
