@@ -1,6 +1,6 @@
 <template>
 <div id="playerStats">
-  <div id="nav" align="left" >
+  <div id="nav" align="center">
     <router-link :to="{ name: 'Home' }"><h1>R6Stats.NET</h1></router-link>
   </div>
   <playerData :data="result"></playerData>
