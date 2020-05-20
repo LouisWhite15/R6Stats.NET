@@ -1,8 +1,6 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R6Tab.NET", "..\R6Tab.NET\R6Tab.NET.csproj", "{FF6FCF19-B747-4C69-A97D-594705434EC5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R6Stats.NET", "R6Stats.NET\R6Stats.NET.csproj", "{CC1DB17F-BD89-47E9-B993-9AF01ED62A65}"
 EndProject
 Global
@@ -11,10 +9,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FF6FCF19-B747-4C69-A97D-594705434EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF6FCF19-B747-4C69-A97D-594705434EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF6FCF19-B747-4C69-A97D-594705434EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF6FCF19-B747-4C69-A97D-594705434EC5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC1DB17F-BD89-47E9-B993-9AF01ED62A65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC1DB17F-BD89-47E9-B993-9AF01ED62A65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC1DB17F-BD89-47E9-B993-9AF01ED62A65}.Release|Any CPU.ActiveCfg = Release|Any CPU
