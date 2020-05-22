@@ -1,4 +1,4 @@
-name: Deploy ASP.NET Core app to Azure Web App
+name: R6Stats.NET API CI/CD
 
 on:
   push:
