@@ -1,4 +1,4 @@
-name: Azure Static Web Apps CI/CD
+name: R6Stats.NET client app CI/CD
 
 on:
   push:
