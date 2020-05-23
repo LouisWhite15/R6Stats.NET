@@ -36,10 +36,10 @@
               <b-col>MAXIMUM RANK</b-col>
             </b-row>
             <b-row class="bg-light data">
-              <b-col>{{result.ranked.asiaMmr}}</b-col>
-              <b-col>{{result.ranked.asiaRankName}}</b-col>
-              <b-col>{{result.ranked.asiaMaxMmr}}</b-col>
-              <b-col>{{result.ranked.asiaMaxRankName}}</b-col>
+              <b-col class="my-auto">{{result.ranked.asiaMmr}}</b-col>
+              <b-col><img :src="require('../assets/ranks/hd-rank' + result.ranked.asiaRank + '.svg')" :alt="result.ranked.asiaRankName + ' logo'" width="50" height="50"></b-col>
+              <b-col class="my-auto">{{result.ranked.asiaMaxMmr}}</b-col>
+              <b-col><img :src="require('../assets/ranks/hd-rank' + result.ranked.asiaMaxRank + '.svg')" :alt="result.ranked.asiaMaxRankName + ' logo'" width="50" height="50"></b-col>
             </b-row>
             <br>
             <b-row class="bg-light title">
