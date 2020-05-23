@@ -9,17 +9,20 @@
         <b-col class="mx-auto"><img style="padding:10px" :src="'https://ubisoft-avatars.akamaized.net/' + result.player.id + '/default_256_256.png'" :alt="result.player.name + '\'s profile picture'" width="150" height="150"></b-col>
         <b-col class="my-auto" style="font-size: 20px; text-align:right;">NAME<br>LEVEL<br>LAST UPDATED</b-col>
         <b-col class="my-auto" style="font-size: 20px; text-align:left">{{result.player.name}}<br>{{result.stats.level}}<br>{{result.refresh.uTime | moment("calendar")}}</b-col>
-        <b-col class="mx-auto"><img v-if="result.ranked.asiaRank != 0" :src="require('../assets/ranks/hd-rank' + result.ranked.asiaRank + '.svg')" :alt="result.ranked.asiaRankName + ' logo'" width="150" height="150"></b-col>
+        <b-col class="mx-auto"><img :src="require('../assets/ranks/hd-rank' + result.ranked.asiaRank + '.svg')" :alt="result.ranked.asiaRankName + ' logo'" width="150" height="150"></b-col>
       </b-row>
       <br>
       <b-row>
         <b-col>
           <b-card
             title="Past Seasons Max Rank">
-              <b-row>
-                <!-- Insert rank history data here -->
-                <b-row class="mx-auto"><br>Coming soon!</b-row>
-              </b-row>
+                <b-row v-for="item in result.seasons" :key="item" class="mx-auto">
+                  <b-col class="h6 my-auto">{{item.seasonName}}</b-col>
+                  <b-col class="my-auto mx-auto">
+                      <img :src="require('../assets/ranks/hd-rank' + item.maxRank + '.svg')" :alt="item.maxRankName + ' logo'" width="50" height="50">
+                      <p v-if="item.maxMmr !== null">{{item.maxMmr}}</p><p v-if="item.maxMmr === null">Unranked</p>
+                  </b-col>
+                </b-row>
           </b-card>
         </b-col>
         <b-col>
@@ -65,7 +68,7 @@
               <b-col>MMR CHANGE</b-col>
             </b-row>
             <b-row class="bg-light">
-              <b-col><p v-if="result.ranked.asiaMmrChange > 0">+{{result.ranked.asiaMmrChange}}</p><p v-if="result.ranked.asiaMmrChange < 0">{{result.ranked.asiaMmrChange}}</p></b-col>
+              <b-col><p style="color: green" v-if="result.ranked.asiaMmrChange > 0">+{{result.ranked.asiaMmrChange}}</p><p style="color: red" v-if="result.ranked.asiaMmrChange < 0">{{result.ranked.asiaMmrChange}}</p></b-col>
             </b-row>
           </b-card>
         </b-col>
