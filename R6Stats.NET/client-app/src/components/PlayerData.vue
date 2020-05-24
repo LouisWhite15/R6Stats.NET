@@ -16,7 +16,7 @@
         <b-col>
           <b-card
             title="Past Seasons Max Rank">
-                <b-row v-for="item in result.seasons" :key="item" class="mx-auto">
+                <b-row v-for="item in seasonsData" :key="item" class="mx-auto">
                   <b-col class="h6 my-auto">{{item.seasonName}}</b-col>
                   <b-col class="my-auto mx-auto">
                       <img :src="require('../assets/ranks/hd-rank' + item.maxRank + '.svg')" :alt="item.maxRankName + ' logo'" width="50" height="50">
@@ -86,6 +86,10 @@ export default class PlayerData extends Vue {
 
   get result() {
     return this.data;
+  }
+
+  get seasonsData() {
+    return Object.values(this.data.seasons).reverse();
   }
 }
 </script>
