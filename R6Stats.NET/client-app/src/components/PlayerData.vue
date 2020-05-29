@@ -132,7 +132,7 @@ export default class PlayerData extends Vue {
   }
 
   get matchHistory() {
-    return Object.values(this.data.matchHistory).slice(-5);
+    return Object.values(this.data.matchHistory).slice(0, 5);
   }
 }
 </script>
