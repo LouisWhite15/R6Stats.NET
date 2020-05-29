@@ -128,7 +128,7 @@ export default class PlayerData extends Vue {
   }
 
   get seasonsData() {
-    return Object.keys(this.data.seasons).reverse();
+    return Object.values(this.data.seasons).reverse();
   }
 
   get matchHistory() {
