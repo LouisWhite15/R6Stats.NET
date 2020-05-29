@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Builder;
@@ -50,6 +51,27 @@ namespace R6Stats.NET
                     Version = displayVersion
                 });
                 c.CustomSchemaIds(x => x.FullName);
+                c.AddSecurityDefinition("ApiKeyAuth", new OpenApiSecurityScheme
+                {
+                    Description = "API Key Authentication",
+                    Name = "X-API-KEY",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "ApiKeyAuth"
+                            }
+                        },
+                        new[] { string.Empty }
+                    }
+                });
             });
         }
 
