@@ -6,14 +6,14 @@
     <br>
     <b-container> 
       <b-row class="bg-light" style="padding:10px">
-        <b-col class="mx-auto"><img style="padding:10px" :src="'https://ubisoft-avatars.akamaized.net/' + result.player.id + '/default_256_256.png'" :alt="result.player.name + '\'s profile picture'" width="150" height="150"></b-col>
-        <b-col class="my-auto" style="font-size: 20px; text-align:right;">NAME<br>LEVEL<br>LAST UPDATED</b-col>
-        <b-col class="my-auto" style="font-size: 20px; text-align:left">{{result.player.name}}<br>{{result.stats.level}}<br>{{result.refresh.uTime | moment("calendar")}}</b-col>
-        <b-col class="mx-auto"><img :src="require('../assets/ranks/hd-rank' + result.ranked.asiaRank + '.svg')" :alt="result.ranked.asiaRankName + ' logo'" width="150" height="150"></b-col>
+        <b-col cols=1 class="mx-auto"><img style="padding:10px" :src="'https://ubisoft-avatars.akamaized.net/' + result.player.id + '/default_256_256.png'" :alt="result.player.name + '\'s profile picture'" width="150" height="150"></b-col>
+        <b-col cols=3 class="my-auto" style="font-size: 20px; text-align:right;">NAME<br>LEVEL<br>LAST UPDATED</b-col>
+        <b-col cols=3 class="my-auto" style="font-size: 20px; text-align:left">{{result.player.name}}<br>{{result.stats.level}}<br>{{result.refresh.uTime | moment("calendar")}}</b-col>
+        <b-col cols=1 class="mx-auto"><img :src="require('../assets/ranks/hd-rank' + result.ranked.asiaRank + '.svg')" :alt="result.ranked.asiaRankName + ' logo'" width="150" height="150"></b-col>
       </b-row>
       <br>
       <b-row>
-        <b-col>
+        <b-col cols=3>
           <b-card
             title="Past Seasons Max Rank">
                 <b-row v-for="item in seasonsData" :key="item" class="mx-auto">
@@ -25,10 +25,9 @@
                 </b-row>
           </b-card>
         </b-col>
-        <b-col>
+        <b-col cols=9>
           <b-card 
-            title="Current Season"
-            style="min-width: 100vh">
+            title="Current Season">
             <b-row class="bg-light title">
               <b-col>CURRENT MMR</b-col>
               <b-col>CURRENT RANK</b-col>
@@ -73,8 +72,7 @@
           </b-card>
           <br>
           <b-card
-            title="Match History"
-            style="min-width: 100vh">
+            title="Match History">
             <b-container v-for="item in matchHistory" :key="item" class="mx-auto">
               <b-row class="bg-light title">
                 <b-col style="font-size: 20px">{{item.date}}</b-col>
