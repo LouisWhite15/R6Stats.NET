@@ -12,7 +12,7 @@
     "@types/vue-moment": "^4.0.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
-    "bootstrap-vue": "^2.7.0",
+    "bootstrap-vue": "^2.15.0",
     "core-js": "^3.6.4",
     "crip-vue-loading": "^1.2.5",
     "crip-vue-notice": "^1.1.1",
