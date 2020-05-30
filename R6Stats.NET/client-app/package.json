@@ -17,7 +17,7 @@
     "crip-vue-loading": "^1.2.5",
     "crip-vue-notice": "^1.1.1",
     "dotenv": "^8.2.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
     "vue-class-component": "^7.2.2",
