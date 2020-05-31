@@ -40,10 +40,17 @@ namespace R6Stats.NET.Controllers
         }
 
         [HttpGet("player/{id}")]
-        public async Task<IActionResult> GetPlayerById(Guid id)
+        public async Task<IActionResult> GetPlayerByIdAsync(Guid id)
         {
             var result = await _r6TabApi.SearchById(id, _configuration["R6Tab_ApiKey"]);
             return Ok(result);
+        }
+
+        [HttpGet("update/{id}")]
+        public async Task<IActionResult> UpdatePlayerByIdAsync(Guid id)
+        {
+            await _r6TabApi.UpdatePlayerDataById(id, _configuration["R6Tab_ApiKey"]);
+            return Ok();
         }
     }
 }

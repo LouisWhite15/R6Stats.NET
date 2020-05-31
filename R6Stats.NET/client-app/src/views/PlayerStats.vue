@@ -28,6 +28,11 @@ export default class PlayerStats extends Vue {
       headers: {'X-API-KEY': process.env.VUE_APP_R6STATS_API_KEY}
     });
 
+    // Update player stats on load
+    await r6statsApi
+      .get(`${process.env.VUE_APP_R6STATS_API_BASE_URL}/r6stats/update/${this.$route.params.id}`);
+
+    // Retrieve player stats
     await r6statsApi
       .get(`${process.env.VUE_APP_R6STATS_API_BASE_URL}/r6stats/player/${this.$route.params.id}`)
       .then((response) =>
