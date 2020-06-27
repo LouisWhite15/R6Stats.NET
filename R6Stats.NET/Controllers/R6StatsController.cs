@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using R6Stats.NET.Authentication;
 using R6Tab.NET;
 using R6Tab.NET.Models;
 
@@ -11,7 +10,7 @@ namespace R6Stats.NET.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize(AuthenticationSchemes = ApiKeyAuthenticationOptions.DefaultScheme)]
+    [EnableCors("AllowSpecificOrigins")]
     public class R6StatsController : ControllerBase
     {
         private readonly IR6TabApi _r6TabApi;

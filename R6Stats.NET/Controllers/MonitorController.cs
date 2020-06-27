@@ -1,5 +1,4 @@
 ﻿using System.Net.NetworkInformation;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace R6Stats.NET.Controllers

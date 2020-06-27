@@ -1,7 +1,5 @@
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +14,8 @@ namespace R6Stats.NET
 {
     public class Startup
     {
+        private readonly string AllowSpecificOrigins = "AllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,7 +32,17 @@ namespace R6Stats.NET
             });
             services.AddScoped<IR6TabApi, R6TabApi>();
 
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: AllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder
+                                        .WithOrigins(Configuration.GetValue<string>("AllowedOrigin"))
+                                        .AllowAnyMethod()
+                                        .AllowAnyHeader();
+                                  });
+            });
 
             services.AddAuthentication(options =>
             {
@@ -81,12 +91,6 @@ namespace R6Stats.NET
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
-                app.UseCors(policy => policy
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .WithOrigins("http://localhost:8080")
-                    .AllowCredentials());
             }
 
             app.UseSwagger();
