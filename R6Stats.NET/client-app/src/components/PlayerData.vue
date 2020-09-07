@@ -9,7 +9,7 @@
         <b-col cols=1 class="mx-auto"><img style="padding:10px" :src="'https://ubisoft-avatars.akamaized.net/' + result.player.id + '/default_256_256.png'" :alt="result.player.name + '\'s profile picture'" width="150" height="150"></b-col>
         <b-col cols=3 class="my-auto" style="font-size: 20px; text-align:right;">NAME<br>LEVEL<br>LAST UPDATED</b-col>
         <b-col cols=3 class="my-auto" style="font-size: 20px; text-align:left">{{result.player.name}}<br>{{result.stats.level}}<br>{{result.refresh.uTime | moment("calendar")}}</b-col>
-        <b-col cols=1 class="mx-auto"><img :src="require('../assets/ranks/hd-rank' + result.ranked.asiaRank + '.svg')" :alt="result.ranked.asiaRankName + ' logo'" width="150" height="150"></b-col>
+        <b-col cols=1 class="mx-auto"><img :src="require('../assets/ranks/hd-rank' + result.ranked.rank + '.svg')" :alt="result.ranked.rankName + ' logo'" width="150" height="150"></b-col>
       </b-row>
       <br>
       <b-row>
@@ -35,10 +35,10 @@
               <b-col>MAXIMUM RANK</b-col>
             </b-row>
             <b-row class="bg-light data">
-              <b-col class="my-auto">{{result.ranked.asiaMmr}}</b-col>
-              <b-col><img :src="require('../assets/ranks/hd-rank' + result.ranked.asiaRank + '.svg')" :alt="result.ranked.asiaRankName + ' logo'" width="50" height="50"></b-col>
-              <b-col class="my-auto">{{result.ranked.asiaMaxMmr}}</b-col>
-              <b-col><img :src="require('../assets/ranks/hd-rank' + result.ranked.asiaMaxRank + '.svg')" :alt="result.ranked.asiaMaxRankName + ' logo'" width="50" height="50"></b-col>
+              <b-col class="my-auto">{{result.ranked.mmr}}</b-col>
+              <b-col><img :src="require('../assets/ranks/hd-rank' + result.ranked.rank + '.svg')" :alt="result.ranked.rankName + ' logo'" width="50" height="50"></b-col>
+              <b-col class="my-auto">{{result.ranked.maxMmr}}</b-col>
+              <b-col><img :src="require('../assets/ranks/hd-rank' + result.ranked.maxRank + '.svg')" :alt="result.ranked.maxRankName + ' logo'" width="50" height="50"></b-col>
             </b-row>
             <br>
             <b-row class="bg-light title">
@@ -47,9 +47,9 @@
               <b-col>K/D</b-col>
             </b-row>
             <b-row class="bg-light data">
-              <b-col>{{result.ranked.asiaKills}}</b-col>
-              <b-col>{{result.ranked.asiaDeaths}}</b-col>
-              <b-col>{{result.ranked.asiaKd}}</b-col>
+              <b-col>{{result.ranked.kills}}</b-col>
+              <b-col>{{result.ranked.deaths}}</b-col>
+              <b-col>{{result.ranked.kd}}</b-col>
             </b-row>
             <br>
             <b-row class="bg-light title">
@@ -58,16 +58,16 @@
               <b-col>W/L</b-col>
             </b-row>
             <b-row class="bg-light data" >
-              <b-col>{{result.ranked.asiaWins}}</b-col>
-              <b-col>{{result.ranked.asiaLosses}}</b-col>
-              <b-col>{{result.ranked.asiaWinLossPercentage}}</b-col>
+              <b-col>{{result.ranked.wins}}</b-col>
+              <b-col>{{result.ranked.losses}}</b-col>
+              <b-col>{{result.ranked.winLossPercentage}}</b-col>
             </b-row>
             <br>
             <b-row class="bg-light title">
               <b-col>MMR CHANGE</b-col>
             </b-row>
             <b-row class="bg-light">
-              <b-col><p style="color: green" v-if="result.ranked.asiaMmrChange > 0">+{{result.ranked.asiaMmrChange}}</p><p style="color: red" v-if="result.ranked.asiaMmrChange < 0">{{result.ranked.asiaMmrChange}}</p></b-col>
+              <b-col><p style="color: green" v-if="result.ranked.mmrChange > 0">+{{result.ranked.mmrChange}}</p><p style="color: red" v-if="result.ranked.mmrChange < 0">{{result.ranked.mmrChange}}</p></b-col>
             </b-row>
           </b-card>
           <br>
