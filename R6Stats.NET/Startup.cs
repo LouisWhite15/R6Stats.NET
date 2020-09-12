@@ -1,15 +1,13 @@
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using R6Stats.NET.Authentication;
 using R6Stats.NET.Filters;
+using R6Stats.NET.ServiceCollectionExtensions;
 using R6Tab.NET;
 
 namespace R6Stats.NET
@@ -26,23 +24,28 @@ namespace R6Stats.NET
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //if (IsDevelopment)
+            //{
+            //    // Disable authentication and authorization
+            //    services.TryAddSingleton<IPolicyEvaluator, DisableAuthenticationPolicyEvaluator>();
+            //}
+
             services.AddControllers(options =>
             {
                 options.Filters.Add<UnhandledExceptionFilter>();
             });
+
             services.AddScoped<IR6TabApi, R6TabApi>();
 
             services.AddCors();
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = ApiKeyAuthenticationOptions.DefaultScheme;
-            }).AddApiKeySupport(options => { });
+            // Authentication
+            services.AddAzureAdJwtAuthentication(Configuration);
 
+            // Api Documentation
             var productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
             var displayVersion = $"v{productVersion}";
 
-            // Api Documentation
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -51,27 +54,6 @@ namespace R6Stats.NET
                     Version = displayVersion
                 });
                 c.CustomSchemaIds(x => x.FullName);
-                c.AddSecurityDefinition("ApiKeyAuth", new OpenApiSecurityScheme
-                {
-                    Description = "API Key Authentication",
-                    Name = "X-API-KEY",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey
-                });
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "ApiKeyAuth"
-                            }
-                        },
-                        new[] { string.Empty }
-                    }
-                });
             });
         }
 
