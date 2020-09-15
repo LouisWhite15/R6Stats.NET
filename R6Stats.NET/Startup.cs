@@ -33,7 +33,13 @@ namespace R6Stats.NET
             services.AddScoped<IR6TabApi, R6TabApi>();
 
             // CORS
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.WithOrigins(Configuration.GetValue<string>("AllowedOrigin"));
+                });
+            });
 
             // Api Documentation
             var productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
@@ -58,11 +64,7 @@ namespace R6Stats.NET
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(policy => policy
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .WithOrigins(Configuration.GetValue<string>("AllowedOrigin"))
-                .AllowCredentials());
+            app.UseCors();
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
