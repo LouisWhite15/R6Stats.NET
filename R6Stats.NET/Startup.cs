@@ -1,14 +1,11 @@
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using R6Stats.NET.Authentication;
 using R6Stats.NET.Filters;
 using R6Tab.NET;
 
@@ -26,23 +23,22 @@ namespace R6Stats.NET
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add exception handling
             services.AddControllers(options =>
             {
                 options.Filters.Add<UnhandledExceptionFilter>();
             });
+
+            // Register services
             services.AddScoped<IR6TabApi, R6TabApi>();
 
+            // CORS
             services.AddCors();
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = ApiKeyAuthenticationOptions.DefaultScheme;
-            }).AddApiKeySupport(options => { });
-
+            // Api Documentation
             var productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
             var displayVersion = $"v{productVersion}";
-
-            // Api Documentation
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -51,27 +47,6 @@ namespace R6Stats.NET
                     Version = displayVersion
                 });
                 c.CustomSchemaIds(x => x.FullName);
-                c.AddSecurityDefinition("ApiKeyAuth", new OpenApiSecurityScheme
-                {
-                    Description = "API Key Authentication",
-                    Name = "X-API-KEY",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey
-                });
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "ApiKeyAuth"
-                            }
-                        },
-                        new[] { string.Empty }
-                    }
-                });
             });
         }
 
@@ -81,13 +56,13 @@ namespace R6Stats.NET
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
-                app.UseCors(policy => policy
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .WithOrigins("http://localhost:8080")
-                    .AllowCredentials());
             }
+
+            app.UseCors(policy => policy
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .WithOrigins(Configuration.GetValue<string>("AllowedOrigin"))
+                .AllowCredentials());
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>

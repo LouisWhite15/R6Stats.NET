@@ -24,9 +24,7 @@ export default class PlayerStats extends Vue {
   async created() {
     this.result = [];
     
-    const r6statsApi = Vue.axios.create({
-      headers: {'X-API-KEY': process.env.VUE_APP_R6STATS_API_KEY}
-    });
+    const r6statsApi = Vue.axios.create();
 
     // Update player stats on load
     await r6statsApi
