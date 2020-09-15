@@ -38,9 +38,7 @@ export default class App extends Vue {
   async onSearch(term:string) {
     this.results = [];
     
-    const r6statsApi = Vue.axios.create({
-      headers: {'X-API-KEY': process.env.VUE_APP_R6STATS_API_KEY}
-    });
+    const r6statsApi = Vue.axios.create();
     
     await r6statsApi
       .get(`${process.env.VUE_APP_R6STATS_API_BASE_URL}/r6stats/search/uplay/${term}`)
