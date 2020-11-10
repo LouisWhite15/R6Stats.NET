@@ -36,6 +36,11 @@ import CurrentSeason from "../components/CurrentSeason.vue";
 import MatchHistory from "../components/MatchHistory.vue";
 import PastSeasonsMaxRank from "../components/PastSeasonsMaxRank.vue";
 
+// Import loading component and stylesheet
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
+Vue.use(Loading);
+
 @Component({
   components: {
     CurrentSeason,
@@ -46,9 +51,14 @@ import PastSeasonsMaxRank from "../components/PastSeasonsMaxRank.vue";
 
 export default class PlayerStats extends Vue {
   @Provide() result = [];
-  @Prop() loading = false;
   
   async created() {
+    const loader = this.$loading.show({
+                  canCancel: false,
+                  loader: 'dots',
+                  isFullPage: true
+                });
+    
     this.result = [];
     
     const r6statsApi = Vue.axios.create();
@@ -64,6 +74,8 @@ export default class PlayerStats extends Vue {
       {
         this.result = response.data;
       });
+    
+     loader.hide();
   }
 }
 </script>

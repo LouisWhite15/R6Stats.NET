@@ -8,7 +8,6 @@ import VueAxios from 'vue-axios'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueMoment from 'vue-moment'
-import CripLoading from "crip-vue-loading"
 
 // Install BootstrapVue
 Vue.use(BootstrapVue);
@@ -17,9 +16,6 @@ Vue.use(IconsPlugin);
 
 // Install VueAxios
 Vue.use(VueAxios, axios);
-
-// Install CripLoading
-Vue.use(CripLoading, {axios})
 
 // Install VueMoment
 Vue.use(VueMoment);
