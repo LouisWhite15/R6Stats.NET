@@ -25,6 +25,11 @@ import { Component, Vue, Prop, Provide, Watch } from "vue-property-decorator";
 import Search from "../components/Search.vue";
 import Results from "../components/Results.vue";
 
+// Import loading component and stylesheet
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
+Vue.use(Loading);
+
 @Component({
   components: {
     Search,
@@ -36,6 +41,12 @@ export default class App extends Vue {
   @Provide() results = [];
   
   async onSearch(term:string) {
+    const loader = this.$loading.show({
+                  canCancel: false,
+                  loader: 'dots',
+                  isFullPage: true
+                });
+    
     this.results = [];
     
     const r6statsApi = Vue.axios.create();
@@ -46,6 +57,8 @@ export default class App extends Vue {
       {
         this.results = response.data;
       });
+    
+    loader.hide(); 
   }
 }
 </script>
