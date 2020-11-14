@@ -1,7 +1,7 @@
 <template>
   <div id="playerStats">
     <div id="nav" align="center">
-      <router-link :to="{ name: 'Home' }"><h1>R6Stats.NET</h1></router-link>
+      <router-link :to="{ name: 'Home' }"><br><img :src="require('../assets/r6stats_net_logo.png')" :alt="'R6Stats.NET logo'"><br></router-link>
     </div>
     <div v-if="result.found === false">
         An error occured.

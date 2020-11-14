@@ -4,7 +4,7 @@
       <div>
         <!-- Header section -->
         <section>
-          <router-link :to="{ name: 'Home' }"><h1 style="padding:30px">R6Stats.NET</h1></router-link>
+          <router-link :to="{ name: 'Home' }"><br><img :src="require('../assets/r6stats_net_logo.png')" :alt="'R6Stats.NET logo'" style="padding: 40px"><br></router-link>
         </section>
         <!-- Search section -->
         <section>
