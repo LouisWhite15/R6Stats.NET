@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Reflection;
 using Microsoft.AspNetCore.Builder;
@@ -41,6 +42,13 @@ namespace R6Stats.NET
                 });
             });
 
+            // Security
+            services.AddHsts(options =>
+            {
+                options.IncludeSubDomains = true;
+                options.MaxAge = TimeSpan.FromDays(365);
+            });
+
             // Api Documentation
             var productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
             var displayVersion = $"v{productVersion}";
@@ -62,6 +70,10 @@ namespace R6Stats.NET
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseHsts();
             }
 
             app.UseCors();
