@@ -23,7 +23,7 @@
     <b-row class="bg-light data">
         <b-col>{{result.ranked.kills}}</b-col>
         <b-col>{{result.ranked.deaths}}</b-col>
-        <b-col>{{result.ranked.kd}}</b-col>
+        <b-col>{{Number(result.ranked.kd).toFixed(2)}}</b-col>
     </b-row>
     <br>
     <b-row class="bg-light title">

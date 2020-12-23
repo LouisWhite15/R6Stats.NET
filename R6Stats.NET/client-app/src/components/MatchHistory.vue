@@ -25,7 +25,7 @@
         <b-row class="bg-light data">
         <b-col>{{item.rankedKills}}</b-col>
         <b-col>{{item.rankedDeaths}}</b-col>
-        <b-col>{{item.rankedKd}}</b-col>
+        <b-col>{{Number(item.rankedKd).toFixed(2)}}</b-col>
         <b-col>{{item.headshotAccuracy}}</b-col>
         </b-row>
         <b-row class="bg-light title">
