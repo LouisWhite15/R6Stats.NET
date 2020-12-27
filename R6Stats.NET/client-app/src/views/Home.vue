@@ -57,7 +57,7 @@ export default class App extends Vue {
       {
         this.results = response.data;
       })
-      .catch(() =>
+      .catch((error) =>
       {
         this.results = [];
       });
