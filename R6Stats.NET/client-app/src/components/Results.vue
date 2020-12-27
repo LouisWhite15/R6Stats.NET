@@ -1,12 +1,10 @@
 <template>
   <div id="results">
-    <div v-if="results.players === null">
-      An error has occurred. Please try again.
-    </div>
+    <b-alert :show="results.players === null || results.length === 0" dismissible fade variant="danger">An error has occured. Please try again later.</b-alert>
     <div class="card-columns">
       <b-card v-for="item in results.players" :key="item">
         <b-card-body>
-          <b-card-title><router-link :to="{ name: 'PlayerStats', params: { id: item.profile.userId }}">{{item.profile.name}}</router-link></b-card-title>
+          <b-card-title><b-link :to="{ name: 'PlayerStats', params: { id: item.profile.userId }}">{{item.profile.name}}</b-link></b-card-title>
           <b-card-text>
             Level: {{item.stats.level}}
           </b-card-text>

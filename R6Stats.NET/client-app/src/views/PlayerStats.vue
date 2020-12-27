@@ -1,7 +1,7 @@
 <template>
   <div id="playerStats">
     <div id="nav" align="center">
-      <router-link :to="{ name: 'Home' }"><br><img :src="require('../assets/r6stats_net_logo.png')" :alt="'R6Stats.NET logo'"><br></router-link>
+      <navigation></navigation>
     </div>
     <div v-if="result.found === false">
         An error occured.
@@ -35,6 +35,7 @@ import { Component, Vue, Prop, Provide } from "vue-property-decorator";
 import CurrentSeason from "../components/CurrentSeason.vue";
 import MatchHistory from "../components/MatchHistory.vue";
 import PastSeasonsMaxRank from "../components/PastSeasonsMaxRank.vue";
+import Navigation from "../components/Navigation.vue";
 
 // Import loading component and stylesheet
 import Loading from 'vue-loading-overlay';
@@ -45,7 +46,8 @@ Vue.use(Loading);
   components: {
     CurrentSeason,
     MatchHistory,
-    PastSeasonsMaxRank
+    PastSeasonsMaxRank,
+    Navigation
   }
 })
 

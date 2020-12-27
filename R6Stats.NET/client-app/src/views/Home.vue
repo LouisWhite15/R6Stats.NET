@@ -1,11 +1,11 @@
 <template>
   <div id="home">
-    <div class="container" style="padding:30px">
+    <!-- Header section -->
+    <section>
+      <navigation></navigation>
+    </section>
+    <b-container>
       <div>
-        <!-- Header section -->
-        <section>
-          <router-link :to="{ name: 'Home' }"><br><img :src="require('../assets/r6stats_net_logo.png')" :alt="'R6Stats.NET logo'" style="padding: 40px"><br></router-link>
-        </section>
         <!-- Search section -->
         <section>
           <search @search="onSearch"></search>
@@ -16,7 +16,7 @@
           <results :data="results"></results>
         </section>
       </div>
-     </div>
+    </b-container>
   </div>
 </template>
 
@@ -24,6 +24,7 @@
 import { Component, Vue, Prop, Provide, Watch } from "vue-property-decorator";
 import Search from "../components/Search.vue";
 import Results from "../components/Results.vue";
+import Navigation from "../components/Navigation.vue";
 
 // Import loading component and stylesheet
 import Loading from 'vue-loading-overlay';
@@ -33,12 +34,13 @@ Vue.use(Loading);
 @Component({
   components: {
     Search,
-    Results
+    Results,
+    Navigation
   }
 })
 
 export default class App extends Vue {
-  @Provide() results = [];
+  @Provide() results:any = null;
   
   async onSearch(term:string) {
     const loader = this.$loading.show({
@@ -47,8 +49,6 @@ export default class App extends Vue {
                   isFullPage: true
                 });
     
-    this.results = [];
-    
     const r6statsApi = Vue.axios.create();
     
     await r6statsApi
@@ -56,6 +56,10 @@ export default class App extends Vue {
       .then((response) =>
       {
         this.results = response.data;
+      })
+      .catch(() =>
+      {
+        this.results = [];
       });
     
     loader.hide(); 
