@@ -17,4 +17,17 @@
   text-align: center;
   color: #2c3e50;
 }
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background-color: lightgray;
+}
+
+#root {
+  background-color: lightgray;
+}
 </style>

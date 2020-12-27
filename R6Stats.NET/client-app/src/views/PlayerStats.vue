@@ -7,7 +7,7 @@
         An error occured.
     </div>
     <div id="playerData">
-      <b-container> 
+      <b-container class="bg-white"> 
         <b-row class="bg-light" style="padding:10px">
           <b-col cols=1 class="mx-auto"><img style="padding:10px" :src="'https://ubisoft-avatars.akamaized.net/' + result.player.id + '/default_256_256.png'" :alt="result.player.name + '\'s profile picture'" width="150" height="150"></b-col>
           <b-col cols=3 class="my-auto" style="font-size: 20px; text-align:right;">NAME<br>LEVEL<br>LAST UPDATED</b-col>
@@ -26,6 +26,7 @@
           </b-col>
         </b-row>
       </b-container>
+      <br>
     </div>
   </div>
 </template>
@@ -81,3 +82,14 @@ export default class PlayerStats extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.container {
+  border-radius: 25px;
+  padding-bottom: 10px;
+}
+
+.row {
+  border-radius: 25px;
+}
+</style>

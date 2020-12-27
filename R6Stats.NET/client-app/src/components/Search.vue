@@ -1,10 +1,10 @@
 <template>
 <div>
   <b-input-group inline class="d-flex justify-content-center">
-    <b-form-input v-model="term" type="text" placeholder="Enter Player Name"/>
+    <b-form-input v-model="term" v-on:keyup.enter="search()" type="text" placeholder="Enter Player Name"/>
   </b-input-group>
   <br>
-  <b-button variant="outline-primary" @click="search()">Search</b-button>
+  <b-button variant="primary" @click="search()">Search</b-button>
 </div>
 </template>
 

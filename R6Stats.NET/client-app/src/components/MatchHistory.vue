@@ -62,4 +62,8 @@ export default class MatchHistory extends Vue {
 .data{
   padding-bottom: 10px;
 }
+
+.container {
+  border-radius: 25px;
+}
 </style>
